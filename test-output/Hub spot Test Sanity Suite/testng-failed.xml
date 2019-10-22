@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Hub spot Test Sanity Suite]">
+  <test thread-count="5" name="hub spot Sanity Test(failed)">
+    <classes>
+      <class name="com.qa.hubspot.tests.LoginTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="loginTest"/>
+          <include name="loginPageTitleTest"/>
+        </methods>
+      </class> <!-- com.qa.hubspot.tests.LoginTest -->
+    </classes>
+  </test> <!-- hub spot Sanity Test(failed) -->
+</suite> <!-- Failed suite [Hub spot Test Sanity Suite] -->

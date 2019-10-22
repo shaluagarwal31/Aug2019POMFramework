@@ -4,36 +4,49 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.hubspot.Base.BasePage;
-
-public class LoginPage extends BasePage {
+import com.qa.hubspot.util.Constants;
+import com.qa.hubspot.util.ElementUtil;
+/**
+ * 
+ * @author NaveenKhunteta
+ *
+ */
+public class LoginPage extends BasePage{
 	
 	WebDriver driver;
-	//define locators OR- with By locator-NPF
-	
-	By emailID = By.id("username");
-	By password =By.id("password");
+	ElementUtil elementUtil;
+
+	//define locators / OR - with By locator (NPF pattern):
+	By emailId = By.id("username");
+	By password = By.id("password");
 	By loginButton = By.id("loginBtn");
 	
 	//constructor of page class:
-	public LoginPage(WebDriver driver) {
-		this.driver= driver;
+	public LoginPage(WebDriver driver){
+		this.driver = driver;
+		elementUtil = new ElementUtil(driver);
 	}
 	
-	//page action:
-	public String getLoginPageTitle() {
-		return driver.getTitle();
+	//page actions:
+	public String getLoginPageTitle(){
+		return elementUtil.waitForPageTitle(Constants.LOGIN_PAGE_TITLE);
 	}
 	
-	public void doLogin(String username,String pwd) { 
-		driver.findElement(emailID).sendKeys(username);
-		driver.findElement(password).sendKeys(pwd);
-		driver.findElement(loginButton).click();
+	public HomePage doLogin(String username, String pwd){
+		elementUtil.doSendKeys(emailId, username);
+		elementUtil.doSendKeys(password, pwd);
+		elementUtil.doClick(loginButton);
+		
+		return new HomePage(driver);
 	}
+	
+	
+}
 
-	
-	
-	
-	
+
+
+
+
 	
 	
 	
